@@ -7,7 +7,7 @@ def clicked():
 	print(IP.address.get())
 
 def main():
-	start = IP()
+	ip_address = IP()
 	
 	
 	
