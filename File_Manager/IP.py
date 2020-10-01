@@ -3,4 +3,4 @@ from tkinter import ttk
 import os
 
 class IP:
-	adress
+	address
