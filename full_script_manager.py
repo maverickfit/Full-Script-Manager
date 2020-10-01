@@ -1,16 +1,16 @@
 from tkinter import *
 from tkinter import ttk
 import os
+from File_Manager.IP import IP
 
 def clicked():
-	print(tablet_IP.get())
+	print(IP.address.get())
 
 def main():
 	root = Tk()
-	global tablet_IP
-	tablet_IP = ttk.Entry(root, width = 12)
+	IP.address = ttk.Entry(root, width = 12)
 	button_script1 = ttk.Button(root, text = 'Click me', command = clicked)
-	tablet_IP.pack()
+	IP.address.pack()
 	button_script1.pack()
 	root.mainloop()
 	
