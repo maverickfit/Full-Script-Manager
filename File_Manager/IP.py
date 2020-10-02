@@ -16,9 +16,9 @@ class IP:
 		self.start_button = ttk.Button(self.footer, text = 'Start', command = self.Start)
 		self.cancel_button = ttk.Button(self.footer, text = 'Cancel', command = self.Cancel)
 		
-		self.label.pack()
-		self.address.pack(fill = X)
-		self.footer.pack(fill = X)
+		self.label.pack(fill = BOTH, expand = True)
+		self.address.pack(fill = BOTH, expand = True)
+		self.footer.pack(fill = BOTH, expand = True)
 		
 		self.start_button.grid(row = 0, column = 0)
 		self.cancel_button.grid(row = 0, column = 1)
