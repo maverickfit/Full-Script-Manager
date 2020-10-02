@@ -3,6 +3,17 @@ from tkinter import ttk
 import os
 from File_Manager.IP import IP
 
+def Run_Installer():
+	print('Run Installer')
+	
+def Run_Idle_Collector():
+	print('Run Idle Collector')
+	
+def Run_Full_Shell_Automation():
+	print('Run Fulle Shell Automation')
+	
+def Run_Webview_Key():
+	print('Run Webview Keys')
 
 def close_script():
 	main_window.destroy()
@@ -36,9 +47,16 @@ def main():
 		
 		#Script frame and widgets
 		script_frame = ttk.Frame(main_window, width = 200, height = 200)
+		installer_button = ttk.Button(script_frame, text = 'Installer', command = Run_Installer)
+		idle_button = ttk.Button(script_frame, text = 'Idle Collector', command = Run_Idle_Collector)
+		shell_automation_button = ttk.Button(script_frame, text = 'Full Shell Automation', command = Run_Full_Shell_Automation)
+		webview_key_button = ttk.Button(script_frame, text = 'Webview Signing Keys', command = Run_Webview_Key)
 		#Script griding
 		script_frame.grid(row = 1, column = 1, sticky = NSEW)
-		
+		installer_button.pack()
+		idle_button.pack()
+		shell_automation_button.pack()
+		webview_key_button.pack()
 		
 		#Footer frame and widgets
 		footer = ttk.Frame(main_window, width = 400, height = 20)
@@ -46,6 +64,13 @@ def main():
 		#Footer griding
 		footer.grid(row = 20, column = 0, columnspan = 2, sticky = EW)
 		exit_button.grid(row = 0, column = 20)
+		
+		#Disable features that are not ready
+		installer_button.state(['disabled'])
+		installer_button.state(['disabled'])
+		idle_button.state(['disabled'])
+		shell_automation_button.state(['disabled'])
+		webview_key_button.state(['disabled'])
 		
 		main_window.mainloop()
 	
