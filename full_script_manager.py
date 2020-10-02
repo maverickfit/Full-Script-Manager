@@ -23,6 +23,14 @@ def main():
 		welcome.grid(row = 0, column = 0)
 		ip_display.grid(row = 0, column = 20)
 		
+		#Image frame and widgets
+		image_frame = ttk.Frame(main_window, width = 100, height = 200)
+		image = PhotoImage(file = 'File_Manager/Automation.gif').subsample(5,3)
+		image_label = ttk.Label(image_frame, image = image)
+		#Image frame griding
+		image_frame.grid(row = 1, column = 0)
+		image_label.pack()
+		
 		#Script frame and widgets
 		script_frame = ttk.Frame(main_window, width = 200, height = 200)
 		#Script griding
