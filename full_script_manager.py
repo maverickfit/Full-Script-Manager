@@ -14,11 +14,14 @@ def main():
 		main_window = Tk()
 		main_window.title('Full Script Manager')
 		
-		testlabel = ttk.Label(text = ip_address.Get_IP())
-		testlabel.pack()
+		header = ttk.Frame(main_window, width = 300, height = 20)
+		header.grid(row = 0, column = 0, rowspan = 4, sticky = EW)
 		
-		close_button = ttk.Button(main_window, text = 'Exit', command = close_script)
-		close_button.pack()
+		footer = ttk.Frame(main_window, width = 300, height = 20)
+		exit_button = ttk.Button(footer, text = 'Quit', command = close_script)
+		footer.grid(row = 20, column = 0, rowspan = 4, sticky = EW)
+		exit_button.grid(row = 0, column = 20)
+		
 		main_window.mainloop()
 	
 	

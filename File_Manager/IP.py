@@ -4,7 +4,7 @@ import os
 
 class IP:
 	entered_address = ''
-	started = False
+	started = True
 	def __init__(self):
 		self.ip_window = Tk()
 		self.ip_window.title('IP Address')
