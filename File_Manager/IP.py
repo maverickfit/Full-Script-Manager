@@ -3,6 +3,7 @@ from tkinter import ttk
 import os
 
 class IP:
+	entered_address = ''
 	def __init__(self):
 		self.ip_window = Tk()
 		self.ip_window.title('IP Address')
@@ -13,7 +14,8 @@ class IP:
 		self.ip_window.mainloop()
 	
 	def clicked(self):
+		self.entered_address = self.address.get()
 		self.ip_window.destroy()
 	
 	def Get_IP(self):
-		return self.address.get()
+		return self.entered_address
