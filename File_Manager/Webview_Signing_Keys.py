@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 import os
 
 class Webview:
@@ -15,4 +16,15 @@ class Webview:
 		os.system('keytool  -printcert -file ./Results/webviewPackage/META-INF/CERT.RSA > ./File_Manager/Results/webviewKeys.txt')
 		os.system('rm -rf ./File_Manager/Results/webviewPackage')
 		
-	
+	def Get_Results(self):
+		SHA1_Actual = os.system("$(cat ./Results/webviewKeys.txt | grep SHA1 | head -n1 | tr -d '[:blank:]' | sed 's/^SHA1://')")
+		SHA256_Actual = os.system("$(cat ./Results/webviewKeys.txt | grep SHA256 | head -n1 | tr -d '[:blank:]' | sed 's/^SHA256://')")
+		
+		if SHA1_Actual == self.SHA1_Standard and SHA256_Actual == self.SHA256_Standard:
+			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The Webview Signing Keys passed')
+		elif SHA1_Actual == self.SHA1_Standard:
+			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The SHA1 key passed, but the SHA256 did not')
+		elif SHA256_Actual == self.SHA256_Standard:
+			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The SHA256 key passed, but the SHA1 did not')
+		else:
+			messagebox.showinfo(title = 'Webview Signing Keys', message = 'Neither of the Webview Signing Keys passed')
