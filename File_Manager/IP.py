@@ -13,7 +13,7 @@ class IP:
 		
 		self.label = ttk.Label(self.ip_window, text = 'Please enter target IP address')
 		self.address = ttk.Entry(self.ip_window, width = 12)
-		self.start_button = ttk.Button(self.footer, text = 'Start', command = self.Start)
+		self.start_button = ttk.Button(self.footer, text = 'Start', command = lambda: self.Start('button'))
 		self.cancel_button = ttk.Button(self.footer, text = 'Cancel', command = lambda: self.Cancel('button'))
 		
 		self.label.pack(fill = BOTH, expand = True)
@@ -25,10 +25,11 @@ class IP:
 		
 		#Key press bindings
 		self.ip_window.bind('<Escape>', self.Cancel)
+		self.address.bind('<Return>', self.Start)
 		
 		self.ip_window.mainloop()
 	
-	def Start(self):
+	def Start(self, event):
 		self.entered_address = self.address.get()
 		self.ip_window.destroy()
 	
