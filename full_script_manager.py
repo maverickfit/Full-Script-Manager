@@ -69,7 +69,6 @@ def main():
 		
 		#Disable features that are not ready
 		installer_button.state(['disabled'])
-		installer_button.state(['disabled'])
 		idle_button.state(['disabled'])
 		shell_automation_button.state(['disabled'])
 		webview_key_button.state(['disabled'])
