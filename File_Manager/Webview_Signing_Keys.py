@@ -17,8 +17,8 @@ class Webview:
 		os.system('rm -rf ./File_Manager/Results/webviewPackage')
 		
 	def Get_Results(self):
-		SHA1_Actual = os.system("$(cat ./Results/webviewKeys.txt | grep SHA1 | head -n1 | tr -d '[:blank:]' | sed 's/^SHA1://')")
-		SHA256_Actual = os.system("$(cat ./Results/webviewKeys.txt | grep SHA256 | head -n1 | tr -d '[:blank:]' | sed 's/^SHA256://')")
+		SHA1_Actual = os.system("$(cat ./File_Manager/Results/webviewKeys.txt | grep SHA1 | head -n1 | tr -d '[:blank:]' | sed 's/^SHA1://')")
+		SHA256_Actual = os.system("$(cat ./File_Manager/Results/webviewKeys.txt | grep SHA256 | head -n1 | tr -d '[:blank:]' | sed 's/^SHA256://')")
 		
 		if SHA1_Actual == self.SHA1_Standard and SHA256_Actual == self.SHA256_Standard:
 			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The Webview Signing Keys passed')
