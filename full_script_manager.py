@@ -17,7 +17,7 @@ def Run_Webview_Key():
 	webview_keys = Webview()
 	webview_keys.Get_Results()
 
-def close_script():
+def close_script(event):
 	main_window.destroy()
 
 def main():
@@ -62,10 +62,13 @@ def main():
 		
 		#Footer frame and widgets
 		footer = ttk.Frame(main_window, width = 400, height = 20)
-		exit_button = ttk.Button(footer, text = 'Quit', command = close_script)
+		exit_button = ttk.Button(footer, text = 'Quit', command = lambda: close_script('button'))
 		#Footer griding
 		footer.grid(row = 20, column = 0, columnspan = 2, sticky = EW)
 		exit_button.grid(row = 0, column = 20)
+		
+		#Key press bindings
+		main_window.bind('<Escape>', close_script)
 		
 		#Disable features that are not ready
 		installer_button.state(['disabled'])
