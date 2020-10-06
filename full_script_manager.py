@@ -14,6 +14,8 @@ def Run_Full_Shell_Automation():
 	print('Run Fulle Shell Automation')
 	
 def Run_Webview_Key():
+	os.system('adb disconnect')
+	os.system('adb connect ' + ip_address.Get_IP())
 	webview_keys = Webview()
 	webview_keys.Get_Results()
 
@@ -22,6 +24,7 @@ def close_script(event):
 
 def main():
 	global main_window
+	global ip_address
 	ip_address = IP()
 	if ip_address.started:
 		main_window = Tk()
@@ -74,7 +77,6 @@ def main():
 		installer_button.state(['disabled'])
 		idle_button.state(['disabled'])
 		shell_automation_button.state(['disabled'])
-		webview_key_button.state(['disabled'])
 		
 		main_window.mainloop()
 	
