@@ -90,3 +90,19 @@ class Installer:
 		
 		#Main loop
 		installer_window.mainloop()
+		
+	def installer():
+		os.system('adb disconnect')
+		os.system('adb connect ' + ip1.get() + '.' + ip2.get() + '.' + ip3.get() + '.' + ip4.get())
+		if antutu_v7.get():
+			os.system('adb install Apks/antutu-benchmark-v731.apk')
+		if antutu_v7_3d.get():
+			os.system('adb install Apks/antutu_benchmark_v7_3d.apk')
+		if antutu_v6.get():
+			os.system('adb install Apks/antutu-benchmark-V6_3_3.apk')
+		if antutu_v6_3d.get():
+			os.system('adb install Apks/com.antutu.benchmark.full-6.1.1-3D.apk')
+		if thermal_shutter.get():
+			os.system('adb install Apks/com.ifit.thermalshutter-2020082100-release.apk')
+		if geekbench.get():
+			os.system('adb install Apks/geekbench-3-4-3-4.apk')
