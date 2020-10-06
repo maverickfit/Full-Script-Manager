@@ -26,13 +26,13 @@ class Installer:
 		thermal_shutter = BooleanVar()
 		
 		#Frame construction
-		options_frame = ttk.Frame(root, width = 300, height = 200)
+		options_frame = ttk.Frame(installer_window, width = 300, height = 200)
 		options_frame.grid(row = 1, column = 1, rowspan = 3, sticky = W)
 		
-		footer_frame = ttk.Frame(root, width = 400, height = 30)
+		footer_frame = ttk.Frame(installer_window, width = 400, height = 30)
 		footer_frame.grid(row = 20, column = 0, columnspan = 2)
 		
-		apk_tree = ttk.Treeview(root, height = 8)
+		apk_tree = ttk.Treeview(installer_window, height = 8)
 		apk_tree.grid(row = 0, column = 0, rowspan = 4)
 		
 		#Checkboxes to select what will be built
@@ -130,3 +130,14 @@ class Installer:
 			ant73d_check.state(['!disabled'])
 		else:
 			ant73d_check.state(['disabled'])
+			
+	def disconnect():
+		os.system('adb disconnect')
+		
+	def connect():
+		os.system('adb disconnect')
+		os.system('adb connect ' + ip1.get() + '.' + ip2.get() + '.' + ip3.get() + '.' + ip4.get())
+	
+	def destroy():
+		os.system('adb disconnect')
+		installer_window.destroy()
