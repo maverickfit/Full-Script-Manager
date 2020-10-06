@@ -6,6 +6,8 @@ class Installer:
 	_IP = ''
 	
 	def __init__(self, IP_Address):
+		self._IP = IP_Address
+		
 		#Building main window
 		global installer_window
 		installer_window = Tk()
@@ -93,7 +95,7 @@ class Installer:
 		
 	def installer():
 		os.system('adb disconnect')
-		os.system('adb connect ' + ip1.get() + '.' + ip2.get() + '.' + ip3.get() + '.' + ip4.get())
+		os.system('adb connect ' + _IP)
 		if antutu_v7.get():
 			os.system('adb install Apks/antutu-benchmark-v731.apk')
 		if antutu_v7_3d.get():
@@ -136,7 +138,7 @@ class Installer:
 		
 	def connect():
 		os.system('adb disconnect')
-		os.system('adb connect ' + ip1.get() + '.' + ip2.get() + '.' + ip3.get() + '.' + ip4.get())
+		os.system('adb connect ' + _IP)
 	
 	def destroy():
 		os.system('adb disconnect')
