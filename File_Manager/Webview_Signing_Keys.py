@@ -23,8 +23,7 @@ class Webview:
 		f = open('SHA256.txt', 'r')
 		SHA256_Actual = f.readline().strip('\n')
 		f.close()
-		print(SHA1_Actual)
-		print(SHA256_Actual)
+		
 		
 		if SHA1_Actual == self.SHA1_Standard and SHA256_Actual == self.SHA256_Standard:
 			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The Webview Signing Keys passed')
