@@ -11,7 +11,7 @@ class Installer:
 		installer_window = Tk()
 		installer_window.title('Installer')
 		
-		#Activity identifiers
+		#Selection variables
 		global antutu_v7
 		global antutu_v7_3d
 		global geekbench
@@ -34,6 +34,20 @@ class Installer:
 		
 		apk_tree = ttk.Treeview(root, height = 8)
 		apk_tree.grid(row = 0, column = 0, rowspan = 4)
+		
+		#Checkboxes to select what will be built
+		global ant7_check
+		global ant73d_check
+		global ant6_check
+		global ant63d_check
+		global therm_check
+		global geek_check
+		ant7_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7', variable = antutu_v7, command = switchoffV6)
+		ant73d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7 3D', variable = antutu_v7_3d, command = switchoffV6_3d)
+		ant6_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6', variable = antutu_v6, command = switchoffV7)
+		ant63d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6 3D', variable = antutu_v6_3d, command = switchoffV7_3d)
+		therm_check = ttk.Checkbutton(options_frame, text = 'Install Thermal Shutter', variable = thermal_shutter)
+		geek_check = ttk.Checkbutton(options_frame, text = 'Install GeekBench', variable = geekbench)
 		
 		#Main loop
 		installer_window.mainloop()
