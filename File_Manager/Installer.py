@@ -106,3 +106,27 @@ class Installer:
 			os.system('adb install Apks/com.ifit.thermalshutter-2020082100-release.apk')
 		if geekbench.get():
 			os.system('adb install Apks/geekbench-3-4-3-4.apk')
+			
+	def switchoffV6():
+		if ant6_check.instate(['disabled']):
+			ant6_check.state(['!disabled'])
+		else:
+			ant6_check.state(['disabled'])
+	
+	def switchoffV6_3d():
+		if ant63d_check.instate(['disabled']):
+			ant63d_check.state(['!disabled'])
+		else:
+			ant63d_check.state(['disabled'])
+			
+	def switchoffV7():
+		if ant7_check.instate(['disabled']):
+			ant7_check.state(['!disabled'])
+		else:
+			ant7_check.state(['disabled'])
+	
+	def switchoffV7_3d():
+		if ant73d_check.instate(['disabled']):
+			ant73d_check.state(['!disabled'])
+		else:
+			ant73d_check.state(['disabled'])
