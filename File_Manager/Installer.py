@@ -82,8 +82,7 @@ class Installer:
 		
 		
 		#Command buttons -->> inside footer frame
-		install_button = ttk.Button(footer_frame, text = 'Install', command = installer).grid(row = 0, column = 0)
-		# uninstall_button = ttk.Button(footer_frame, text = 'Uninstall', command = uninstaller).grid(row = 0, column = 1)
+		install_button = ttk.Button(footer_frame, text = 'Install', command = installer).grid(row = 0, column = 0)		# uninstall_button = ttk.Button(footer_frame, text = 'Uninstall', command = uninstaller).grid(row = 0, column = 1)
 		connect_button = ttk.Button(footer_frame, text = 'Connect', command = connect).grid(row = 0, column = 2)
 		disconnet_button = ttk.Button(footer_frame, text = 'Disconnect', command = disconnect).grid(row = 0, column = 3)
 		exit_button = ttk.Button(footer_frame, text = 'Exit', command = destroy).grid(row = 0, column = 4)
