@@ -49,5 +49,45 @@ class Installer:
 		therm_check = ttk.Checkbutton(options_frame, text = 'Install Thermal Shutter', variable = thermal_shutter)
 		geek_check = ttk.Checkbutton(options_frame, text = 'Install GeekBench', variable = geekbench)
 		
+		#Gridding out window display
+		
+		#Program checkboxes -->> inside options frame
+		ant7_check.grid(row = 0, column = 0, sticky = W)
+		ant73d_check.grid(row = 1, column = 0, sticky = W)
+		ant6_check.grid(row = 2, column = 0, sticky = W)
+		ant63d_check.grid(row = 3, column = 0, sticky = W)
+		therm_check.grid(row = 4, column = 0, sticky = W)
+		geek_check.grid(row = 5, column = 0, sticky = W)
+		
+		#APK listings -->> inside apk tree (APK)
+		apk_tree.column('#0', width = 175)
+		apk_tree.heading('#0', text = 'APK')
+		apk_tree.insert('', '0', 'antutu7', text = 'Antutu v7')
+		apk_tree.insert('antutu7', '0', 'antutubenchmark7', text = 'Antutu Benchmark v7')
+		apk_tree.insert('antutu7', '1', 'antutu73d', text = 'Antutu v7 3D')
+		apk_tree.insert('', '1', 'antutu6', text = 'Antutu v6')
+		apk_tree.insert('antutu6', '0', 'antutubenchmark6', text = 'Antutu Benchmark v6')
+		apk_tree.insert('antutu6', '1', 'antutu63d', text = 'Antutu v6 3D')
+		apk_tree.insert('', '2', 'thermalshutter', text = 'Thermal Shutter')
+		apk_tree.insert('', '3', 'geekbench', text = 'GeekBench')
+		apk_tree.configure(column = 'version')
+		apk_tree.column('version', width = 100, anchor = 'center')
+		apk_tree.heading('version', text = 'Version')
+		apk_tree.set('antutubenchmark7', 'version', '7.3.1')
+		apk_tree.set('antutu73d', 'version', '7.3.1')
+		apk_tree.set('antutubenchmark6', 'version', '6.3.3')
+		apk_tree.set('antutu63d', 'version', '6.1.1')
+		apk_tree.set('thermalshutter', 'version', '2020082100')
+		apk_tree.set('geekbench', 'version', '4.3.3')
+		
+		
+		#Command buttons -->> inside footer frame
+		install_button = ttk.Button(footer_frame, text = 'Install', command = installer).grid(row = 0, column = 0)
+		# uninstall_button = ttk.Button(footer_frame, text = 'Uninstall', command = uninstaller).grid(row = 0, column = 1)
+		connect_button = ttk.Button(footer_frame, text = 'Connect', command = connect).grid(row = 0, column = 2)
+		disconnet_button = ttk.Button(footer_frame, text = 'Disconnect', command = disconnect).grid(row = 0, column = 3)
+		exit_button = ttk.Button(footer_frame, text = 'Exit', command = destroy).grid(row = 0, column = 4)
+	
+		
 		#Main loop
 		installer_window.mainloop()
