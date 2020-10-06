@@ -95,7 +95,7 @@ class Installer:
 		
 	def installer(event):
 		os.system('adb disconnect')
-		os.system('adb connect ' + _IP)
+		os.system('adb connect ' + self._IP)
 		if antutu_v7.get():
 			os.system('adb install Apks/antutu-benchmark-v731.apk')
 		if antutu_v7_3d.get():
@@ -138,7 +138,7 @@ class Installer:
 		
 	def connect(event):
 		os.system('adb disconnect')
-		os.system('adb connect ' + _IP)
+		os.system('adb connect ' + self._IP)
 	
 	def destroy(event):
 		os.system('adb disconnect')
