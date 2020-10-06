@@ -3,9 +3,10 @@ from tkinter import ttk
 import os
 from File_Manager.IP import IP
 from File_Manager.Webview_Signing_Keys import Webview
+from File_Manager.Installer import Installer
 
 def Run_Installer():
-	print('Run Installer')
+	installer_obj = Installer()
 	
 def Run_Idle_Collector():
 	print('Run Idle Collector')
