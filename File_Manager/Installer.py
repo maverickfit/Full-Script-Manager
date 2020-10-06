@@ -93,7 +93,7 @@ class Installer:
 		#Main loop
 		installer_window.mainloop()
 		
-	def installer():
+	def installer(self, event):
 		os.system('adb disconnect')
 		os.system('adb connect ' + _IP)
 		if antutu_v7.get():
@@ -109,37 +109,37 @@ class Installer:
 		if geekbench.get():
 			os.system('adb install Apks/geekbench-3-4-3-4.apk')
 			
-	def switchoffV6():
+	def switchoffV6(self, event):
 		if ant6_check.instate(['disabled']):
 			ant6_check.state(['!disabled'])
 		else:
 			ant6_check.state(['disabled'])
 	
-	def switchoffV6_3d():
+	def switchoffV6_3d(self, event):
 		if ant63d_check.instate(['disabled']):
 			ant63d_check.state(['!disabled'])
 		else:
 			ant63d_check.state(['disabled'])
 			
-	def switchoffV7():
+	def switchoffV7(self, event):
 		if ant7_check.instate(['disabled']):
 			ant7_check.state(['!disabled'])
 		else:
 			ant7_check.state(['disabled'])
 	
-	def switchoffV7_3d():
+	def switchoffV7_3d(self, event):
 		if ant73d_check.instate(['disabled']):
 			ant73d_check.state(['!disabled'])
 		else:
 			ant73d_check.state(['disabled'])
 			
-	def disconnect():
+	def disconnect(self, event):
 		os.system('adb disconnect')
 		
-	def connect():
+	def connect(self, event):
 		os.system('adb disconnect')
 		os.system('adb connect ' + _IP)
 	
-	def destroy():
+	def destroy(self, event):
 		os.system('adb disconnect')
 		installer_window.destroy()
