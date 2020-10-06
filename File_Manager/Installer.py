@@ -44,10 +44,10 @@ class Installer:
 		global ant63d_check
 		global therm_check
 		global geek_check
-		ant7_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7', variable = antutu_v7, command = switchoffV6)
-		ant73d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7 3D', variable = antutu_v7_3d, command = switchoffV6_3d)
-		ant6_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6', variable = antutu_v6, command = switchoffV7)
-		ant63d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6 3D', variable = antutu_v6_3d, command = switchoffV7_3d)
+		ant7_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7', variable = antutu_v7, command = self.switchoffV6)
+		ant73d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7 3D', variable = antutu_v7_3d, command = self.switchoffV6_3d)
+		ant6_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6', variable = antutu_v6, command = self.switchoffV7)
+		ant63d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6 3D', variable = antutu_v6_3d, command = self.switchoffV7_3d)
 		therm_check = ttk.Checkbutton(options_frame, text = 'Install Thermal Shutter', variable = thermal_shutter)
 		geek_check = ttk.Checkbutton(options_frame, text = 'Install GeekBench', variable = geekbench)
 		
