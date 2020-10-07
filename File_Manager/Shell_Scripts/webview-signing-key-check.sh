@@ -17,7 +17,7 @@ WEBVIEW_PATH=$(adb shell pm path com.android.webview | sed 's/^package://')
 mkdir ./Results/webviewPackage
 adb pull $WEBVIEW_PATH ./Results/webviewPackage
 PACKAGE_NAME=$(ls ./Results/webviewPackage)
-unzip ./Results/webviewPackage/$PACKAGE_NAME -d ./Results/webviewPackage
+unzip ./Results/webviewPackage/$PACKAGE_NAME -d ./Results/webviewPackage &>dev/null
 keytool  -printcert -file ./Results/webviewPackage/META-INF/CERT.RSA > ./Results/webviewKeys.txt
 rm -rf ./Results/webviewPackage #Clean up
 
