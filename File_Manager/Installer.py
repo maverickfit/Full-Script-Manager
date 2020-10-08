@@ -3,6 +3,7 @@ from tkinter import ttk
 import os
 
 class Installer:
+    _IP = ''
 
     def __init__(self, master, ip_address):    
         self._IP = ip_address
@@ -25,7 +26,7 @@ class Installer:
         self.options_frame.grid(row = 1, column = 1, rowspan = 3, sticky = NSEW)
         
         self.footer_frame = ttk.Frame(self.installer_window, width = 300, height = 30)
-        self.footer_frame.grid(row = 2, column = 0, columnspan = 2, sticky = EW)
+        self.footer_frame.grid(row = 20, column = 0, columnspan = 2, sticky = EW)
         
         self.ip_frame = ttk.Frame(self.installer_window, width = 300, height = 30)
         self.ip_frame.grid(row = 0, column = 1, sticky = EW)
@@ -75,7 +76,7 @@ class Installer:
         self.apk_tree.set('geekbench', 'version', '4.3.3')
         
         #program buttons
-        tk.Button(self.footer_frame, text = 'Install', command = self.installer).grid(row = 0, column = 0)
+        ttk.Button(self.footer_frame, text = 'Install', command = self.installer).grid(row = 0, column = 0)
         ttk.Button(self.footer_frame, text = 'Connect', command = self.connect).grid(row = 0, column = 1)
         ttk.Button(self.footer_frame, text = 'Disconnect', command = self.disconnect).grid(row = 0, column = 2)
         ttk.Button(self.footer_frame, text = 'Exit', command = lambda: self.destroy(master)).grid(row = 0, column = 3)
@@ -106,7 +107,7 @@ class Installer:
         os.system('adb disconnect')
         os.system('adb connect ' + self._IP)
         
-    def destory(self, master):
+    def destroy(self, master):
         os.system('adb disconnect')
         self.installer_window.destroy()
         master.state('normal')
