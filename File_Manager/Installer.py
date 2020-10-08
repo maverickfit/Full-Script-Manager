@@ -8,17 +8,17 @@ class Installer:
         self._IP = ip_address
         
         #building main window
-        self.installer_window = TopLevel(master)
+        self.installer_window = Toplevel(master)
         self.installer_window.title('Installer')
         master.state('withdrawn')
         
         #setting variables
-        self.antutu_v7 = BoolenVar()
-        self.antutu_v7_3d = BoolenVar()
-        self.antutu_v6 = BoolenVar()
-        self.antutu_v6_3d = BoolenVar()
-        self.thermal_shutter = BoolenVar()
-        self.geekbench = BoolenVar()
+        self.antutu_v7 = BooleanVar()
+        self.antutu_v7_3d = BooleanVar()
+        self.antutu_v6 = BooleanVar()
+        self.antutu_v6_3d = BooleanVar()
+        self.thermal_shutter = BooleanVar()
+        self.geekbench = BooleanVar()
         
         #frame construction
         self.options_frame = ttk.Frame(self.installer_window, width = 300, height = 200)
