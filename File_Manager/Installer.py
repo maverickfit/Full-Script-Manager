@@ -140,7 +140,7 @@ class Installer:
 def main():            
     
     root = Tk()
-    installer = Installer(root)
+    Installer(root, 'ipaddress')
     root.mainloop()
     
 if __name__ == "__main__": main()
