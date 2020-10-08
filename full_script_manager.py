@@ -6,7 +6,7 @@ from File_Manager.Webview_Signing_Keys import Webview
 from File_Manager.Installer import Installer
 
 def Run_Installer():
-	installer_obj = Installer(main_window, ip_address)
+	installer_obj = Installer(main_window, ip_address.Get_IP())
 	
 def Run_Idle_Collector():
 	print('Run Idle Collector')
@@ -75,7 +75,6 @@ def main():
 		main_window.bind('<Escape>', close_script)
 		
 		#Disable features that are not ready
-		installer_button.state(['disabled'])
 		idle_button.state(['disabled'])
 		shell_automation_button.state(['disabled'])
 		
