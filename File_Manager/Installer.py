@@ -87,6 +87,30 @@ class Installer:
         os.system('adb disconnect')
         self.installer_window.destroy()
         master.state('normal')
+        
+    def switchoffV6(self):
+        if self.ant6_check.instate(['disabled']):
+            self.ant6_check.state(['!disabled'])
+        else:
+            self.ant6_check.state(['disabled'])
+            
+    def switchoffV6_3d(self):
+        if self.ant63d_check.instate(['disabled']):
+            self.ant63d_check.state(['!disabled'])
+        else:
+            self.ant63d_check.state(['disabled'])
+            
+    def switchoffV7(self):
+        if self.ant7_check.instate(['disabled']):
+            self.ant7_check.state(['!disabled'])
+        else:
+            self.ant7_check.state(['disabled'])
+            
+    def switchoffV7_3d(self):
+        if self.ant73d_check.instate(['disabled']):
+            self.ant73d_check.state(['!disabled'])
+        else:
+            self.ant73d_check.state(['disabled'])
 
             
 def main():            
