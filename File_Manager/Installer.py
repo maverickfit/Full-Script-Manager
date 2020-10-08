@@ -83,6 +83,13 @@ class Installer:
         #main window loop
         self.installer_window.mainloop()
         
+    def disconnect(self):
+        os.system('adb disconnect')
+        
+    def connect(self):
+        os.system('adb disconnect')
+        os.system('adb connect ' + self._IP)
+        
     def destory(self, master):
         os.system('adb disconnect')
         self.installer_window.destroy()
