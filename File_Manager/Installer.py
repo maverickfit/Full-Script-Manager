@@ -78,7 +78,7 @@ class Installer:
         tk.Button(self.footer_frame, text = 'Install', command = self.installer).grid(row = 0, column = 0)
         ttk.Button(self.footer_frame, text = 'Connect', command = self.connect).grid(row = 0, column = 1)
         ttk.Button(self.footer_frame, text = 'Disconnect', command = self.disconnect).grid(row = 0, column = 2)
-        ttk.Button(self.footer_frame, text = 'Exit', command = self.destroy).grid(row = 0, column = 3)
+        ttk.Button(self.footer_frame, text = 'Exit', command = lambda: self.destroy(master)).grid(row = 0, column = 3)
             
         #main window loop
         self.installer_window.mainloop()
