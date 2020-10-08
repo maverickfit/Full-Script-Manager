@@ -28,18 +28,18 @@ class Installer:
         self.footer_frame.grid(row = 2, column = 0, columnspan = 2, sticky = EW)
         
         self.ip_frame = ttk.Frame(self.installer_window, width = 300, height = 30)
-        self.ip_frame.grid(row = 0, column = 1, sticky = WE)
+        self.ip_frame.grid(row = 0, column = 1, sticky = EW)
         
         self.apk_tree = ttk.Treeview(self.installer_window, height = 8)
         self.apk_tree.grid(row = 0, column = 0, rowspan = 4, sticky = NS)
         
         #installation checkboxes
-        self.ant7_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7', variable = self.antutu_v7, command = self.switchoffV6)
-        self.ant73d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V7 3D', variable = self.antutu_v7_3d, command = self.switchoffV6_3d)
-        self.ant6_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6', variable = self.antutu_v6, command = self.switchoffV7)
-        self.ant63d_check = ttk.Checkbutton(options_frame, text = 'Install Antutu V6 3D', variable = self.antutu_v6_3d, command = self.switchoffV7_3d)
-        self.therm_check = ttk.Checkbutton(options_frame, text = 'Install Thermal Shutter', variable = self.thermal_shutter)
-        self.geek_check = ttk.Checkbutton(options_frame, text = 'Install GeekBench', variable = self.geekbench)
+        self.ant7_check = ttk.Checkbutton(self.options_frame, text = 'Install Antutu V7', variable = self.antutu_v7, command = self.switchoffV6)
+        self.ant73d_check = ttk.Checkbutton(self.options_frame, text = 'Install Antutu V7 3D', variable = self.antutu_v7_3d, command = self.switchoffV6_3d)
+        self.ant6_check = ttk.Checkbutton(self.options_frame, text = 'Install Antutu V6', variable = self.antutu_v6, command = self.switchoffV7)
+        self.ant63d_check = ttk.Checkbutton(self.options_frame, text = 'Install Antutu V6 3D', variable = self.antutu_v6_3d, command = self.switchoffV7_3d)
+        self.therm_check = ttk.Checkbutton(self.options_frame, text = 'Install Thermal Shutter', variable = self.thermal_shutter)
+        self.geek_check = ttk.Checkbutton(self.options_frame, text = 'Install GeekBench', variable = self.geekbench)
         #Griding out window display
         
         #ip display --> IP frame
