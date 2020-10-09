@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, filename=filepath, format='%(asctime)s: 
 logging.info('Full Script Manager was started')
 
 def Run_Installer():
-	installer_obj = Installer(main_window, ip_address.Get_IP())
+	Installer(main_window, ip_address.Get_IP())
 	
 def Run_Idle_Collector():
 	print('Run Idle Collector')
