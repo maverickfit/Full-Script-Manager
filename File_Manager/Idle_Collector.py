@@ -53,7 +53,8 @@ class Collector:
         #workout widgets
         ttk.Label(self.workout_frame, text = 'Number of workouts:').pack(side = LEFT)
         self.number_of = StringVar()
-        Spinbox(self.workout_frame, textvariable = self.number_of).pack(side = LEFT)
+        Spinbox(self.workout_frame, from_ = 0, to = 20, textvariable = self.number_of).pack(side = LEFT)
+        
 
 
         self.idle_window.mainloop()
