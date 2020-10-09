@@ -13,6 +13,15 @@ filepath = 'File_Manager/.Logs/' + filename
 logging.basicConfig(level=logging.INFO, filename=filepath, format='%(asctime)s: %(filename)s - %(levelname)s - %(message)s')
 logging.info('Full Script Manager was started')
 
+MAX_SIZE = 5
+SIZE = len([name for name in os.listdir('File_Manager/.Logs/')])
+print(SIZE)
+if SIZE > MAX_SIZE:
+	file_list = os.listdir('File_Manager/.Logs/')
+	full_path = ['File_Manager/.Logs/{}'.format(x) for x in file_list]
+	oldest_file = min(full_path, key=os.path.getctime)
+	os.remove(oldest_file)
+
 def Run_Installer():
 	Installer(main_window, ip_address.Get_IP())
 	
