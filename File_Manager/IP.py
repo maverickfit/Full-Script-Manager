@@ -28,6 +28,9 @@ class IP:
 		#Key press bindings
 		self.ip_window.bind('<Escape>', self.Cancel)
 		self.address.bind('<Return>', self.Start)
+
+		#set focus
+		self.address.focus()
 		
 		self.ip_window.mainloop()
 	
