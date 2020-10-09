@@ -57,15 +57,30 @@ class Collector:
         self.workout_count.pack(side = LEFT)
         ttk.Button(self.workout_frame, text = 'Select', command = self.Get_Time).pack(side = LEFT)
 
+        #results widgets -- not called until results are recieved
+        self.sum_label = ttk.Label(self.results_frame, text = 'Final sum: ')
+        self.num_label = ttk.Label(self.results_frame, text = 'Number of results pulled: ')
+        self.ave_labet = ttk.Label(self.results_frame, text = 'Average time CPU spent idle: ')
+
         #progress widgets
         self.progressbar = ttk.Progressbar(self.progress_frame, mode = 'indeterminate', orient = HORIZONTAL, length = 300)
         self.progressbar.pack(anchor = 'center')
+
+        #footer widgets
+        ttk.Button(self.footer_frame, text = 'Start').pack(side = LEFT)
+        ttk.Button(self.footer_frame, text = 'Results', command = self.Show_Results).pack(side = LEFT)
+        ttk.Button(self.footer_frame, text = 'Exit').pack(side = RIGHT)
 
         
         self.idle_window.mainloop()
 
     def Get_Time(self):
         self.workout_count.configure(state = 'disabled') 
+
+    def Show_Results(self):
+        self.sum_label.pack()
+        self.num_label.pack()
+        self.ave_labet.pack()
 
 def main():            
     
