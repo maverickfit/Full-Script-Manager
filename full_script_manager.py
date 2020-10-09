@@ -1,10 +1,17 @@
 from tkinter import *
 from tkinter import ttk
 import logging
+from datetime import datetime
 import os
 from File_Manager.IP import IP
 from File_Manager.Webview_Signing_Keys import Webview
 from File_Manager.Installer import Installer
+
+filename = datetime.now().strftime('log_%H:%M_%d-%m-%Y.log')
+filepath = 'File_Manager/.Logs/' + filename
+
+logging.basicConfig(level=logging.INFO, filename=filepath, format='%(asctime)s: %(filename)s - %(levelname)s - %(message)s')
+logging.info('Full Script Manager was started')
 
 def Run_Installer():
 	installer_obj = Installer(main_window, ip_address.Get_IP())

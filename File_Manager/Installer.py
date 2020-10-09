@@ -8,7 +8,9 @@ from tkinter import messagebox
 class Installer:
     _IP = ''
 
-    def __init__(self, master, ip_address):    
+    def __init__(self, master, ip_address):   
+        logging.info('Installer was started')
+ 
         self._IP = ip_address
         
         #building main window
