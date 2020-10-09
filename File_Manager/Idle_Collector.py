@@ -6,8 +6,8 @@ from tkinter import messagebox
 
 class Collector:
 
-    def __init__(self, master): 
-        logging.info('Idle Collector was started')   
+    def __init__(self, master):
+        logging.info('Idle Collector was started')
 
             
 def main():            
