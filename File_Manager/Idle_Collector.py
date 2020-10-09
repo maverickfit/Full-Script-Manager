@@ -17,7 +17,7 @@ class Collector:
         #builds main idle collector window
         self.idle_window = Toplevel(master)
         self.idle_window.title('Idle Collector')
-        master.state(['widthdrawn'])
+        master.state(['withdrawn'])
 
         #frame builder
         self.header_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
@@ -35,7 +35,7 @@ class Collector:
         self.results_frame = ttk.Frame(self.idle_window, width = 200, height = 400)
         self.results_frame.grid(row = 2, column = 1, sticky = NSEW, rowspan = 4)
 
-        self.progress_frame = ttk.Frame(self.idle_window, Width = 300, height = 50)
+        self.progress_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
         self.progress_frame.grid(row = 19, column = 0, sticky = EW, columnspan = 2)
 
         self.footer_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
@@ -48,7 +48,7 @@ class Collector:
         ttk.Label(self.header_frame, text = 'IP: ' + self._IP).pack(side = RIGHT)
 
         #intro widgets
-        ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running and the lenght of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
+        ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running\nand the lenght of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
 
         #workout widgets
 
