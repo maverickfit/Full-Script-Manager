@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 import os
+import subprocess
+from tkinter import messagebox
 
 class Installer:
     _IP = ''
@@ -96,7 +98,13 @@ class Installer:
         if self.antutu_v6_3d.get():
             os.system('adb install File_Manager/Apks/com.antutu.benchmark.full-6.1.1-3D.apk')
         if self.thermal_shutter.get():
-            os.system('adb install File_Manager/Apks/com.ifit.thermalshutter-2020082100-release.apk')
+            thermal_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/com.ifit.thermalshutter-2020082100-release.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout, stderr = thermal_install.communicate()
+            if stderr != '':
+                messagebox.showerror(title='Installer', message='Thermal Shutter could not be installed: {}'.format(stderr))
+            else:
+                messagebox.showinfo(title='Installer', message='Thermal Shutter was installed successfully')
+            #os.system('adb install File_Manager/Apks/com.ifit.thermalshutter-2020082100-release.apk')
         if self.geekbench.get():
             os.system('adb install File_Manager/Apks/geekbench-3-4-3-4.apk')
             
