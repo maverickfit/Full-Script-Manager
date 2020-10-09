@@ -40,6 +40,17 @@ class Collector:
         self.footer_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
         self.footer_frame.grid(row = 20, column = 0, sticky = EW, columnspan = 2)
 
+        #griding out window
+
+        #header widgets
+        ttk.Label(self.header_frame, text = 'Welcome to the Idle Collector').pack(side = LEFT)
+        ttk.Label(self.header_frame, text = 'IP: ' + self._IP).pack(side = RIGHT)
+
+        #intro widgets
+        ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running and the lenght of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
+
+        #workout widgets
+
         self.idle_window.mainloop()
 
             
