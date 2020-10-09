@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import logging
 import os
 from File_Manager.IP import IP
 from File_Manager.Webview_Signing_Keys import Webview

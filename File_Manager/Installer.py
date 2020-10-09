@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import logging
 import os
 import subprocess
 from tkinter import messagebox
