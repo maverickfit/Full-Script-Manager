@@ -20,10 +20,25 @@ class Collector:
 
         #frame builder
         self.header_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
-        self.header_frame.pack(expand = True, fill = HORIZONTAL)
+        self.header_frame.grid(row = 0, column = 0, sticky = EW, columnspan = 2)
+
+        self.intro_frame = ttk.Frame(self.idle_window, width = 300, height = 100)
+        self.intro_frame.grid(row = 1, column = 0, sticky = EW, columnspan = 2)
+
+        self.workout_frame = ttk.Frame(self.idle_window, width = 100, height = 100)
+        self.workout_frame.grid(row = 2, column = 0, sticky = EW)
+
+        self.lenght_frame = ttk.Frame(self.idle_window, width = 100, height = 300)
+        self.lenght_frame.grid(row = 3, column = 0, sticky = NSEW, rowspan = 3)
+
+        self.results_frame = ttk.Frame(self.idle_window, width = 200, height = 400)
+        self.results_frame.grid(row = 2, column = 1, sticky = NSEW, rowspan = 4)
+
+        self.progress_frame = ttk.Frame(self.idle_window, Width = 300, height = 50)
+        self.progress_frame.grid(row = 19, column = 0, sticky = EW, columnspan = 2)
 
         self.footer_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
-        self.footer_frame.pack(side = BOTTOM, expand = True, fill = HORIZONTAL)
+        self.footer_frame.grid(row = 20, column = 0, sticky = EW, columnspan = 2)
 
         self.idle_window.mainloop()
 
