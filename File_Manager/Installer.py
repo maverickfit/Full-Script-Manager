@@ -90,13 +90,33 @@ class Installer:
         os.system('adb disconnect')
         os.system('adb connect ' + self._IP)
         if self.antutu_v7.get():
-            os.system('adb install File_Manager/Apks/antutu-benchmark-v731.apk')
+            antutuv7_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/antutu-benchmark-v731.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout, stderr = antutuv7_install.communicate()
+            if stderr != '':
+                messagebox.showerror(title='Installer', message='Antutu V7 could not be installed: {}'.format(stderr))
+            else:
+                messagebox.showinfo(title='Installer', message='Antutu V7 was installed successfully')
         if self.antutu_v7_3d.get():
-            os.system('adb install File_Manager/Apks/antutu_benchmark_v7_3d.apk')
+            antutuv73d_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/antutu_benchmark_v7_3d.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout, stderr = antutuv73d_install.communicate()
+            if stderr != '':
+                messagebox.showerror(title='Installer', message='Antutu V7 3D could not be installed: {}'.format(stderr))
+            else:
+                messagebox.showinfo(title='Installer', message='Antutu V7 3D was installed successfully')
         if self.antutu_v6.get():
-            os.system('adb install File_Manager/Apks/antutu-benchmark-V6_3_3.apk')
+            antutuv6_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/antutu-benchmark-V6_3_3.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout, stderr = antutuv6_install.communicate()
+            if stderr != '':
+                messagebox.showerror(title='Installer', message='Antutu V6 could not be installed: {}'.format(stderr))
+            else:
+                messagebox.showinfo(title='Installer', message='Antutu V6 was installed successfully')
         if self.antutu_v6_3d.get():
-            os.system('adb install File_Manager/Apks/com.antutu.benchmark.full-6.1.1-3D.apk')
+            antutuv63d_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/com.antutu.benchmark.full-6.1.1-3D.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout, stderr = antutuv63d_install.communicate()
+            if stderr != '':
+                messagebox.showerror(title='Installer', message='Antutu V6 3D could not be installed: {}'.format(stderr))
+            else:
+                messagebox.showinfo(title='Installer', message='Antutu V6 3D was installed successfully')
         if self.thermal_shutter.get():
             thermal_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/com.ifit.thermalshutter-2020082100-release.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
             stdout, stderr = thermal_install.communicate()
@@ -104,10 +124,13 @@ class Installer:
                 messagebox.showerror(title='Installer', message='Thermal Shutter could not be installed: {}'.format(stderr))
             else:
                 messagebox.showinfo(title='Installer', message='Thermal Shutter was installed successfully')
-            #os.system('adb install File_Manager/Apks/com.ifit.thermalshutter-2020082100-release.apk')
         if self.geekbench.get():
-            os.system('adb install File_Manager/Apks/geekbench-3-4-3-4.apk')
-            
+            geek_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/geekbench-3-4-3-4.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout, stderr = geek_install.communicate()
+            if stderr != '':
+                messagebox.showerror(title='Installer', message='Geekbench could not be installed: {}'.format(stderr))
+            else:
+                messagebox.showinfo(title='Installer', message='Geekbench was installed successfully')
     def disconnect(self):
         os.system('adb disconnect')
         
