@@ -53,13 +53,16 @@ class Collector:
         #workout widgets
         ttk.Label(self.workout_frame, text = 'Number of workouts:').pack(side = LEFT)
         self.number_of = StringVar()
-        Spinbox(self.workout_frame, from_ = 0, to = 20, textvariable = self.number_of).pack(side = LEFT)
+        self.workout_count = Spinbox(self.workout_frame, from_ = 0, to = 20, textvariable = self.number_of)
+        self.workout_count.pack(side = LEFT)
+        ttk.Button(self.workout_frame, text = 'Select', command = self.Get_Time).pack(side = LEFT)
+
         
-
-
         self.idle_window.mainloop()
 
-            
+    def Get_Time(self):
+        self.workout_count.configure(state = 'disabled') 
+
 def main():            
     
     root = Tk()
