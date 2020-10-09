@@ -57,6 +57,10 @@ class Collector:
         self.workout_count.pack(side = LEFT)
         ttk.Button(self.workout_frame, text = 'Select', command = self.Get_Time).pack(side = LEFT)
 
+        #progress widgets
+        self.progressbar = ttk.Progressbar(self.progress_frame, mode = 'indeterminate', orient = HORIZONTAL, length = 300)
+        self.progressbar.pack(anchor = 'center')
+
         
         self.idle_window.mainloop()
 
