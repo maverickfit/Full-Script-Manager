@@ -40,6 +40,7 @@ def Run_Webview_Key():
 	webview_keys.Get_Results()
 
 def close_script(event):
+	logging.info('Full Script Manager was exited')
 	main_window.destroy()
 
 def main():
