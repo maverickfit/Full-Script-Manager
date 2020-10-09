@@ -69,7 +69,7 @@ class Collector:
         #footer widgets
         ttk.Button(self.footer_frame, text = 'Start').pack(side = LEFT)
         ttk.Button(self.footer_frame, text = 'Results', command = self.Show_Results).pack(side = LEFT)
-        ttk.Button(self.footer_frame, text = 'Exit').pack(side = RIGHT)
+        ttk.Button(self.footer_frame, text = 'Exit', command = lambda: self.Destroy(master)).pack(side = RIGHT)
 
         
         self.idle_window.mainloop()
@@ -81,6 +81,10 @@ class Collector:
         self.sum_label.pack()
         self.num_label.pack()
         self.ave_labet.pack()
+
+    def Destroy(self, master):
+        master.state(['normal'])
+        self.idle_window.destroy()
 
 def main():            
     
