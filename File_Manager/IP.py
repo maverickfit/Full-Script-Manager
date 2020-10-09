@@ -7,6 +7,7 @@ class IP:
 	entered_address = ''
 	started = True
 	def __init__(self):
+		logging.info('IP was started')
 		self.ip_window = Tk()
 		self.ip_window.title('IP Address')
 		
@@ -31,10 +32,12 @@ class IP:
 		self.ip_window.mainloop()
 	
 	def Start(self, event):
+		logging.info(f'IP started with an ip of {self.address.get()}')
 		self.entered_address = self.address.get()
 		self.ip_window.destroy()
 	
 	def Cancel(self, event):
+		logging.info('IP was canceled')
 		self.started = False
 		self.ip_window.destroy()
 	

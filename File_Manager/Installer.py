@@ -98,6 +98,7 @@ class Installer:
             if stderr != '':
                 messagebox.showerror(title='Installer', message='Antutu V7 could not be installed: {}'.format(stderr))
             else:
+                logging.info(f'antutu V7: {stdout}')
                 messagebox.showinfo(title='Installer', message='Antutu V7 was installed successfully')
         if self.antutu_v7_3d.get():
             antutuv73d_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/antutu_benchmark_v7_3d.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -105,6 +106,7 @@ class Installer:
             if stderr != '':
                 messagebox.showerror(title='Installer', message='Antutu V7 3D could not be installed: {}'.format(stderr))
             else:
+                logging.info(f'antutu V7 3D: {stdout}')
                 messagebox.showinfo(title='Installer', message='Antutu V7 3D was installed successfully')
         if self.antutu_v6.get():
             antutuv6_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/antutu-benchmark-V6_3_3.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -112,6 +114,7 @@ class Installer:
             if stderr != '':
                 messagebox.showerror(title='Installer', message='Antutu V6 could not be installed: {}'.format(stderr))
             else:
+                logging.info(f'antutu V6: {stdout}')
                 messagebox.showinfo(title='Installer', message='Antutu V6 was installed successfully')
         if self.antutu_v6_3d.get():
             antutuv63d_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/com.antutu.benchmark.full-6.1.1-3D.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -119,6 +122,7 @@ class Installer:
             if stderr != '':
                 messagebox.showerror(title='Installer', message='Antutu V6 3D could not be installed: {}'.format(stderr))
             else:
+                logging.info(f'antutu V6 3D: {stdout}')
                 messagebox.showinfo(title='Installer', message='Antutu V6 3D was installed successfully')
         if self.thermal_shutter.get():
             thermal_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/com.ifit.thermalshutter-2020082100-release.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -126,6 +130,7 @@ class Installer:
             if stderr != '':
                 messagebox.showerror(title='Installer', message='Thermal Shutter could not be installed: {}'.format(stderr))
             else:
+                logging.info(f'Thermal Shutter: {stdout}')
                 messagebox.showinfo(title='Installer', message='Thermal Shutter was installed successfully')
         if self.geekbench.get():
             geek_install = subprocess.Popen(['adb', 'install', 'File_Manager/Apks/geekbench-3-4-3-4.apk'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -133,6 +138,7 @@ class Installer:
             if stderr != '':
                 messagebox.showerror(title='Installer', message='Geekbench could not be installed: {}'.format(stderr))
             else:
+                logging.info(f'Geekbench: {stdout}')
                 messagebox.showinfo(title='Installer', message='Geekbench was installed successfully')
     def disconnect(self):
         os.system('adb disconnect')
@@ -142,6 +148,7 @@ class Installer:
         os.system('adb connect ' + self._IP)
         
     def destroy(self, master):
+        logging.info('Installer was exited')
         os.system('adb disconnect')
         self.installer_window.destroy()
         master.state('normal')

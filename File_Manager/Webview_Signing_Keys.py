@@ -11,11 +11,13 @@ class Webview:
 	home = os.getcwd()
 	
 	def __init__(self):
+		logging.info('Webview Signing Keys was started')
 		os.chdir('File_Manager/Shell_Scripts')
 		os.system('./webview-signing-key-check.sh')
 		os.chdir(self.home)
 		
 	def Get_Results(self):
+		logging.info('Webview Signing Keys (Get_Results) was started')
 		os.chdir('File_Manager/Shell_Scripts/Results')
 		f = open('SHA1.txt', 'r')
 		SHA1_Actual = f.readline().strip('\n')
@@ -28,11 +30,15 @@ class Webview:
 		
 		if SHA1_Actual == self.SHA1_Standard and SHA256_Actual == self.SHA256_Standard:
 			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The Webview Signing Keys passed')
+			logging.info('Webview Signing Keys Passed')
 		elif SHA1_Actual == self.SHA1_Standard:
 			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The SHA1 key passed, but the SHA256 did not')
+			logging.info('The SHA1 key passed, but the SHA256 did not')
 		elif SHA256_Actual == self.SHA256_Standard:
 			messagebox.showinfo(title = 'Webview Signing Keys', message = 'The SHA256 key passed, but the SHA1 did not')
+			logging.info('The SHA1 key passed, but the SHA1 did not')
 		else:
 			messagebox.showinfo(title = 'Webview Signing Keys', message = 'Neither of the Webview Signing Keys passed')
+			logging.info('Neither of the Webview Signing Keys Passed')
 			
 	os.chdir(home)
