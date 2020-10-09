@@ -6,6 +6,7 @@ from tkinter import messagebox
 
 class Collector:
     _IP = ''
+    _workout_number = 0
     _workout_time = 0
 
     def __init__(self, master, ip_address):
@@ -50,6 +51,7 @@ class Collector:
         ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running and the lenght of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
 
         #workout widgets
+
 
         self.idle_window.mainloop()
 
