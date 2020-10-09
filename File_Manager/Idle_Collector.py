@@ -29,8 +29,8 @@ class Collector:
         self.workout_frame = ttk.Frame(self.idle_window, width = 100, height = 100)
         self.workout_frame.grid(row = 2, column = 0, sticky = EW)
 
-        self.lenght_frame = ttk.Frame(self.idle_window, width = 100, height = 300)
-        self.lenght_frame.grid(row = 3, column = 0, sticky = NSEW, rowspan = 3)
+        self.length_frame = ttk.Frame(self.idle_window, width = 100, height = 300)
+        self.length_frame.grid(row = 3, column = 0, sticky = NSEW, rowspan = 3)
 
         self.results_frame = ttk.Frame(self.idle_window, width = 200, height = 400)
         self.results_frame.grid(row = 2, column = 1, sticky = NSEW, rowspan = 4)
@@ -48,9 +48,12 @@ class Collector:
         ttk.Label(self.header_frame, text = 'IP: ' + self._IP).pack(side = RIGHT)
 
         #intro widgets
-        ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running\nand the lenght of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
+        ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running\nand the length of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
 
         #workout widgets
+        ttk.Label(self.workout_frame, text = 'Number of workouts:').pack(side = LEFT)
+        self.number_of = StringVar()
+        Spinbox(self.workout_frame, textvariable = self.number_of).pack(side = LEFT)
 
 
         self.idle_window.mainloop()
