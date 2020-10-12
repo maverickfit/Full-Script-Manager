@@ -3,6 +3,7 @@ from tkinter import ttk
 import logging
 import os
 from tkinter import messagebox
+import subprocess
 
 class Automation:
 
@@ -14,7 +15,14 @@ class Automation:
             if messagebox.askyesno(title = 'Tablet Rooted', message = 'Is the tablet rooted (rooting instructions are found in README.md)?'):
                 if messagebox.askyesno(title = 'Oracle JDK', message = 'Is the latest JDK from Oracle installed on your testing computer?'):
                     if messagebox.askyesno(title = 'Connection method', message = 'Are you connected to the tablet via a wired USB OTG cable (not WiFi)?'):
-                        print('you made it')
+                        os.chdir('File_Manager/Shell_Scripts')
+                        logging.info('Testing started')
+                        geekbench_cpu = subprocess.Popen(['./geekbench-cpu-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                        stdout, stderr = geekbench_cpu.communicate()
+                        if stderr != '':
+                            messagebox.showerror(title = 'Geekbench CPU Test', message = 'Unable to complete Geekbench CPU due to an error: {}'.format(stderr))
+                        else:
+                            logging.info('Geekbench test ran: {}'.format(stdout))
                     else:
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
                         master.state(['normal'])
