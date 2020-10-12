@@ -35,6 +35,12 @@ class Automation:
                                     messagebox.showerror(title = 'Geekbench Compute Test', message = 'Unable to complete Geekbench Compute test due to an error: {}'.format(stderr))
                                 else:
                                     logging.info('Geekbench compute test ran: {}'.format(stdout))
+                                    memory = subprocess.Popen(['./memory-verification.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                                    stdout, stderr = memory.communicate()
+                                    if stderr != '':
+                                        messagebox.showerror(title = 'Memory Verification', message='Unable to complete Memory Verification due to an error: {}'.format(stderr))
+                                    else:
+                                        logging.info('Memory Varification test ran: {}'.format(stdout))
                     else:
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
                         master.state(['normal'])
