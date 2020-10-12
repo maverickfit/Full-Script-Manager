@@ -96,7 +96,6 @@ def main():
 		main_window.bind('<Escape>', close_script)
 		
 		#Disable features that are not ready
-		idle_button.state(['disabled'])
 		shell_automation_button.state(['disabled'])
 		
 		main_window.mainloop()
