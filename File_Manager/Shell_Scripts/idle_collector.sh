@@ -27,3 +27,5 @@ I_FINAL_VAL=$(echo "scale=2; $I_SUM / $I_NUM_LINES" | bc -l)
 echo $I_SUM >> $RESULTS_FILE
 echo $I_NUM_LINES >> $RESULTS_FILE
 echo $I_FINAL_VAL >> $RESULTS_FILE
+
+echo "success"
