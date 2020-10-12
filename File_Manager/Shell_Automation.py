@@ -1,10 +1,12 @@
 from tkinter import *
 from tkinter import ttk
+import logging
+import os
 
 class Automation:
 
     def __init__(self, master):
-        pass
+        logging.info('Shell Automation started')
 
             
 def main():            
