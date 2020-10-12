@@ -6,6 +6,7 @@ import os
 from File_Manager.IP import IP
 from File_Manager.Webview_Signing_Keys import Webview
 from File_Manager.Installer import Installer
+from File_Manager.Idle_Collector import Collector
 
 f = open('File_Manager/.Logs/.gitkeep', 'w')
 f.close()
@@ -28,7 +29,7 @@ def Run_Installer():
 	Installer(main_window, ip_address.Get_IP())
 	
 def Run_Idle_Collector():
-	print('Run Idle Collector')
+	Collector(main_window, ip_address.Get_IP())
 	
 def Run_Full_Shell_Automation():
 	print('Run Fulle Shell Automation')
