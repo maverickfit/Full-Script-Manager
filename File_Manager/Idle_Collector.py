@@ -127,7 +127,7 @@ class Collector:
 
     def Start(self):
         self.progressbar.start()
-        idler = subprocess.Popen('File_Manager/Shell_Scripts/idle_collector.sh', self._workout_time)
+        idler = subprocess.Popen(['File_Manager/Shell_Scripts/idle_collector.sh', self._workout_time], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         stdout, stderr = idler.communicate()
         if stderr != '':
             messagebox.showerror(title = 'Idle Collector', message = 'Idle Collector encountered an error: {}'.format(stderr))
