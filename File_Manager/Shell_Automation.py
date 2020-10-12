@@ -22,7 +22,13 @@ class Automation:
                         if stderr != '':
                             messagebox.showerror(title = 'Geekbench CPU Test', message = 'Unable to complete Geekbench CPU due to an error: {}'.format(stderr))
                         else:
-                            logging.info('Geekbench test ran: {}'.format(stdout))
+                            logging.info('Geekbench CPU test ran: {}'.format(stdout))
+                            geekbench_compute = subprocess.Popen(['./geekbench-compute-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                            stdout, stderr = geekbench_compute.communicate()
+                            if stderr != '':
+                                messagebox.showerror(title = 'Geekbench Compute Test', message = 'Unable to complete Geekbench Compute test due to an error: {}'.format(stderr))
+                            else:
+                                logging.info('Geekbench compute test ran: {}'.format(stdout))
                     else:
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
                         master.state(['normal'])
