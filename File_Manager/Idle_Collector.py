@@ -3,12 +3,14 @@ from tkinter import ttk
 import logging
 import os
 from tkinter import messagebox
+import subprocess
 
 class Collector:
     _IP = ''
-    _workout_number = 0
+    _Sum = ''
+    _Num_Lines = ''
+    _Final = ''
     _workout_time = 0
-    _counter = 0
 
     def __init__(self, master, ip_address):
         logging.info('Idle Collector was started')
@@ -68,11 +70,6 @@ class Collector:
         self.length_spinbox3.grid(row = 2, column = 1)
         self.length_button3.grid(row = 2, column = 2)
 
-        #results widgets -- not called until results are recieved
-        self.sum_label = ttk.Label(self.results_frame, text = 'Final sum: ')
-        self.num_label = ttk.Label(self.results_frame, text = 'Number of results pulled: ')
-        self.ave_labet = ttk.Label(self.results_frame, text = 'Average time CPU spent idle: ')
-
         #progress widgets
         self.progressbar = ttk.Progressbar(self.progress_frame, mode = 'indeterminate', orient = HORIZONTAL, length = 300)
         self.progressbar.pack(anchor = 'center')
@@ -84,6 +81,18 @@ class Collector:
 
         
         self.idle_window.mainloop()
+
+    def Retrive_Score(self):
+        f = open('File_Manager/Shell_Scripts/Results/idle_results.txt')
+        lines = f.readlines()
+        self._Sum = lines[0]
+        self._Num_Lines = lines[1]
+        self._Final = lines[2]
+
+        #results widgets -- not called until results are recieved
+        self.sum_label = ttk.Label(self.results_frame, text = 'Final sum: {}'.format(self._Sum))
+        self.num_label = ttk.Label(self.results_frame, text = 'Number of results pulled: {}'.format(self._Num_Lines))
+        self.ave_labet = ttk.Label(self.results_frame, text = 'Average time CPU spent idle: {}'.format(self._Final))
 
     def Add_On(self, int, workout):
         self._workout_time += int
@@ -99,6 +108,8 @@ class Collector:
             self.length_button3.state(['disabled'])
 
     def Show_Results(self):
+        self.Retrive_Score()
+
         self.sum_label.pack()
         self.num_label.pack()
         self.ave_labet.pack()
@@ -113,6 +124,16 @@ class Collector:
         self.length_button2.state(['!disabled'])
         self.length_spinbox3.configure(state = 'normal')
         self.length_button3.state(['!disabled'])
+
+    def Start(self):
+        self.progressbar.start()
+        idler = subprocess.Popen('File_Manager/Shell_Scripts/idle_collector.sh', self._workout_time)
+        stdout, stderr = idler.communicate()
+        if stderr != '':
+            messagebox.showerror(title = 'Idle Collector', message = 'Idle Collector encountered an error: {}'.format(stderr))
+        else:
+            logging.info(f'Idle Collector: {stdout}')
+            self.progressbar.stop()
 
     def Destroy(self, master):
         master.state(['normal'])
