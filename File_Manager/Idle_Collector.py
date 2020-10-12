@@ -11,9 +11,10 @@ class Collector:
     _Num_Lines = ''
     _Final = ''
     _workout_time = 0
+    home = os.getcwd()
 
     def __init__(self, master, ip_address):
-        logging.info('Idle Collector was started')
+        logging.info('Idle Collector was opened')
 
         self._IP = ip_address
 
@@ -75,8 +76,8 @@ class Collector:
         self.progressbar.pack(anchor = 'center')
 
         #footer widgets
-        ttk.Button(self.footer_frame, text = 'Start').pack(side = LEFT)
-        ttk.Button(self.footer_frame, text = 'Results', command = self.Show_Results).pack(side = LEFT)
+        ttk.Button(self.footer_frame, text = 'Start', command = self.Start).pack(side = LEFT)
+        #ttk.Button(self.footer_frame, text = 'Results', command = self.Show_Results).pack(side = LEFT)
         ttk.Button(self.footer_frame, text = 'Exit', command = lambda: self.Destroy(master)).pack(side = RIGHT)
 
         
@@ -126,14 +127,20 @@ class Collector:
         self.length_button3.state(['!disabled'])
 
     def Start(self):
+        logging.info('Idle Collector was started')
         self.progressbar.start()
-        idler = subprocess.Popen(['File_Manager/Shell_Scripts/idle_collector.sh', self._workout_time], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        os.chdir('File_Manager/Shell_Scripts')
+        os.system('rm -rf Results/idle_results.txt')
+        os.system('rm -rf Results/idle.txt')
+        idler = subprocess.Popen(['./idle_collector.sh', str(self._workout_time)], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         stdout, stderr = idler.communicate()
         if stderr != '':
             messagebox.showerror(title = 'Idle Collector', message = 'Idle Collector encountered an error: {}'.format(stderr))
         else:
             logging.info(f'Idle Collector: {stdout}')
             self.progressbar.stop()
+            os.chdir(self.home)
+            self.Show_Results()
 
     def Destroy(self, master):
         master.state(['normal'])
