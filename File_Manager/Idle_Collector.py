@@ -103,6 +103,17 @@ class Collector:
         self.num_label.pack()
         self.ave_labet.pack()
 
+        self.workout_length1.set('0')
+        self.workout_length2.set('0')
+        self.workout_length3.set('0')
+
+        self.length_spinbox1.configure(state = 'normal')
+        self.length_button1.state(['!disabled'])
+        self.length_spinbox2.configure(state = 'normal')
+        self.length_button2.state(['!disabled'])
+        self.length_spinbox3.configure(state = 'normal')
+        self.length_button3.state(['!disabled'])
+
     def Destroy(self, master):
         master.state(['normal'])
         self.idle_window.destroy()
