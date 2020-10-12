@@ -8,6 +8,7 @@ class Collector:
     _IP = ''
     _workout_number = 0
     _workout_time = 0
+    _counter = 0
 
     def __init__(self, master, ip_address):
         logging.info('Idle Collector was started')
@@ -26,14 +27,11 @@ class Collector:
         self.intro_frame = ttk.Frame(self.idle_window, width = 300, height = 100)
         self.intro_frame.grid(row = 1, column = 0, sticky = EW, columnspan = 2)
 
-        self.workout_frame = ttk.Frame(self.idle_window, width = 100, height = 100)
-        self.workout_frame.grid(row = 2, column = 0, sticky = EW)
+        self.length_frame = ttk.Frame(self.idle_window, width = 100, height = 100)
+        self.length_frame.grid(row = 2, column = 0, sticky = NSEW)
 
-        self.length_frame = ttk.Frame(self.idle_window, width = 100, height = 300)
-        self.length_frame.grid(row = 3, column = 0, sticky = NSEW, rowspan = 3)
-
-        self.results_frame = ttk.Frame(self.idle_window, width = 200, height = 400)
-        self.results_frame.grid(row = 2, column = 1, sticky = NSEW, rowspan = 4)
+        self.results_frame = ttk.Frame(self.idle_window, width = 200, height = 100)
+        self.results_frame.grid(row = 2, column = 1, sticky = NSEW)
 
         self.progress_frame = ttk.Frame(self.idle_window, width = 300, height = 50)
         self.progress_frame.grid(row = 19, column = 0, sticky = EW, columnspan = 2)
@@ -50,12 +48,25 @@ class Collector:
         #intro widgets
         ttk.Label(self.intro_frame, text = 'Please enter the number of workouts that you plan on running\nand the length of each rounding down to the nearest minute.').pack(expand = True, fill = BOTH)
 
-        #workout widgets
-        ttk.Label(self.workout_frame, text = 'Number of workouts:').pack(side = LEFT)
-        self.number_of = StringVar()
-        self.workout_count = Spinbox(self.workout_frame, from_ = 0, to = 20, textvariable = self.number_of)
-        self.workout_count.pack(side = LEFT)
-        ttk.Button(self.workout_frame, text = 'Select', command = self.Get_Time).pack(side = LEFT)
+        #length widgets
+        self.workout_length1 = StringVar()
+        ttk.Label(self.length_frame, text = 'How long is the first workout:').grid(row = 0, column = 0)
+        self.length_spinbox1 = Spinbox(self.length_frame, from_ = 0, to = 200, textvariable = self.workout_length1)
+        self.length_button1 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length1.get())))
+        self.length_spinbox1.grid(row = 0, column = 1)
+        self.length_button1.grid(row = 0, column = 2)
+        self.workout_length2 = StringVar()
+        ttk.Label(self.length_frame, text = 'How long is the second workout:').grid(row = 1, column = 0)
+        self.length_spinbox2 = Spinbox(self.length_frame, from_ = 0, to = 200, textvariable = self.workout_length2)
+        self.length_button2 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length2.get())))
+        self.length_spinbox2.grid(row = 1, column = 1)
+        self.length_button2.grid(row = 1, column = 2)
+        self.workout_length3 = StringVar()
+        ttk.Label(self.length_frame, text = 'How long is the third workout:').grid(row = 2, column = 0)
+        self.length_spinbox3 = Spinbox(self.length_frame, from_ = 0, to = 200, textvariable = self.workout_length3)
+        self.length_button3 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length3.get())))
+        self.length_spinbox3.grid(row = 2, column = 1)
+        self.length_button3.grid(row = 2, column = 2)
 
         #results widgets -- not called until results are recieved
         self.sum_label = ttk.Label(self.results_frame, text = 'Final sum: ')
@@ -74,8 +85,8 @@ class Collector:
         
         self.idle_window.mainloop()
 
-    def Get_Time(self):
-        self.workout_count.configure(state = 'disabled') 
+    def Add_On(self, int):
+        self._workout_time += int
 
     def Show_Results(self):
         self.sum_label.pack()
