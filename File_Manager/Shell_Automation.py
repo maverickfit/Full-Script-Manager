@@ -41,6 +41,12 @@ class Automation:
                                         messagebox.showerror(title = 'Memory Verification', message='Unable to complete Memory Verification due to an error: {}'.format(stderr))
                                     else:
                                         logging.info('Memory Varification test ran: {}'.format(stdout))
+                                        processor = subprocess.Popen(['./processor-size-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                                        stdout, stderr = processor.communicate()
+                                        if stderr != '':
+                                            messagebox.showerror(title = 'Processor Bit Size', message='Unable to complete Processor Bit Size due to an error: {}'.format(stderr))
+                                        else:
+                                            logging.info('Processor Bit Size test ran: {}'.format(stdout))
                     else:
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
                         master.state(['normal'])
