@@ -7,7 +7,7 @@ RESULTS_FILE="Results/idle_results.txt"
 let SECONDS_IN_MINUTE=55 #set to 55 to account for 4.5s drift per minute
 let DELAY=1 #Variable to set the delay between top log pulls in seconds
 let LINES=5 #Variable to set the number of top displays (lower equals less impact)
-let TIME_TOTAL=0
+let TIME_TOTAL=$SECONDS_IN_MINUTE*$1
 
 adb shell top -d $DELAY -m $LINES -n $TIME_TOTAL | grep Idle | tr -s " " "\n" | grep -A1 Idle | tr -d '%Idle-' | grep -v -e '^$' >> $I_FILE_NAME #Collect Idle Data from 'top'
 
