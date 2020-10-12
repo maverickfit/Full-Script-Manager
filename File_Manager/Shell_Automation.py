@@ -47,6 +47,13 @@ class Automation:
                                             messagebox.showerror(title = 'Processor Bit Size', message='Unable to complete Processor Bit Size due to an error: {}'.format(stderr))
                                         else:
                                             logging.info('Processor Bit Size test ran: {}'.format(stdout))
+                                            webview_version = subprocess.Popen(['./webview-version-check.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                                            stdout, stderr = webview_version.communicate()
+                                            if stderr != '':
+                                                messagebox.showerror(title='Webview Version', message='Unable to complete Webview Version Check due to an error: {}'.format(stderr))
+                                            else:
+                                                logging.info('Webview Version test ran: {}'.format(stdout))
+                                                
                     else:
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
                         master.state(['normal'])
