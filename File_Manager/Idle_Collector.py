@@ -52,19 +52,19 @@ class Collector:
         self.workout_length1 = StringVar()
         ttk.Label(self.length_frame, text = 'How long is the first workout:').grid(row = 0, column = 0)
         self.length_spinbox1 = Spinbox(self.length_frame, from_ = 0, to = 200, textvariable = self.workout_length1)
-        self.length_button1 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length1.get())))
+        self.length_button1 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length1.get()),'1'))
         self.length_spinbox1.grid(row = 0, column = 1)
         self.length_button1.grid(row = 0, column = 2)
         self.workout_length2 = StringVar()
         ttk.Label(self.length_frame, text = 'How long is the second workout:').grid(row = 1, column = 0)
         self.length_spinbox2 = Spinbox(self.length_frame, from_ = 0, to = 200, textvariable = self.workout_length2)
-        self.length_button2 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length2.get())))
+        self.length_button2 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length2.get()),'2'))
         self.length_spinbox2.grid(row = 1, column = 1)
         self.length_button2.grid(row = 1, column = 2)
         self.workout_length3 = StringVar()
         ttk.Label(self.length_frame, text = 'How long is the third workout:').grid(row = 2, column = 0)
         self.length_spinbox3 = Spinbox(self.length_frame, from_ = 0, to = 200, textvariable = self.workout_length3)
-        self.length_button3 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length3.get())))
+        self.length_button3 = ttk.Button(self.length_frame, text = 'Select', command = lambda: self.Add_On(int(self.workout_length3.get()),'3'))
         self.length_spinbox3.grid(row = 2, column = 1)
         self.length_button3.grid(row = 2, column = 2)
 
@@ -85,8 +85,18 @@ class Collector:
         
         self.idle_window.mainloop()
 
-    def Add_On(self, int):
+    def Add_On(self, int, workout):
         self._workout_time += int
+
+        if workout == '1':
+            self.length_spinbox1.configure(state = 'disabled')
+            self.length_button1.state(['disabled'])
+        elif workout == '2':
+            self.length_spinbox2.configure(state = 'disabled')
+            self.length_button2.state(['disabled'])
+        elif workout == '3':
+            self.length_spinbox3.configure(state = 'disabled')
+            self.length_button3.state(['disabled'])
 
     def Show_Results(self):
         self.sum_label.pack()
