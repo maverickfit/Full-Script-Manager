@@ -7,6 +7,7 @@ from File_Manager.IP import IP
 from File_Manager.Webview_Signing_Keys import Webview
 from File_Manager.Installer import Installer
 from File_Manager.Idle_Collector import Collector
+from File_Manager.Shell_Automation import Automation
 
 f = open('File_Manager/.Logs/.gitkeep', 'w')
 f.close()
@@ -32,7 +33,7 @@ def Run_Idle_Collector():
 	Collector(main_window, ip_address.Get_IP())
 	
 def Run_Full_Shell_Automation():
-	print('Run Fulle Shell Automation')
+	Automation(main_window)
 	
 def Run_Webview_Key():
 	os.system('adb disconnect')
