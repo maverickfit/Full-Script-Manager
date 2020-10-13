@@ -10,8 +10,8 @@ class Automation:
     def __init__(self, master):
         logging.info('Shell Automation started')
 
-        self.crossimage = PhotoImage(file = 'File_Manager/Image/crossout.png')
-        self.checkimage = PhotoImage(file = 'File_Manager/Image/checkmark.png')
+        self.crossimage = PhotoImage(file = 'File_Manager/Image/crossout.gif')
+        self.checkimage = PhotoImage(file = 'File_Manager/Image/checkmark.gif')
 
         master.state(['withdrawn'])
         self.progress_window = Toplevel(master)
