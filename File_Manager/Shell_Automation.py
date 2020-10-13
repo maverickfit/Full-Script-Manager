@@ -69,8 +69,8 @@ class Automation:
                                                 messagebox.showerror(title='Webview Version', message='Unable to complete Webview Version Check due to an error: {}'.format(stderr))
                                             else:
                                                 logging.info('Webview Version test ran: {}'.format(stdout))
-                                                ttk.Label(self.progress_window, text = 'HTML5: ').grid(row = 0, column = 0)
-                                                html5 = subprocess.Popen(['.html5-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                                                ttk.Label(self.progress_window, text = 'HTML5: ').grid(row = 6, column = 0)
+                                                html5 = subprocess.Popen(['./html5-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                                                 stdout, stderr = html5.communicate()
                                                 if stderr != '':
                                                     logging.error(f'HTML5 exited with error: {stderr}')
