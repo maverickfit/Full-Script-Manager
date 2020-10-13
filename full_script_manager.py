@@ -66,7 +66,7 @@ def main():
 		
 		#Image frame and widgets
 		image_frame = ttk.Frame(main_window, width = 100, height = 200)
-		image = PhotoImage(file = 'File_Manager/Automation.gif').subsample(5,3)
+		image = PhotoImage(file = 'File_Manager/Image/Automation.gif').subsample(5,3)
 		image_label = ttk.Label(image_frame, image = image)
 		#Image frame griding
 		image_frame.grid(row = 1, column = 0, sticky = NSEW)
