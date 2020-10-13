@@ -10,8 +10,8 @@ class Automation:
     def __init__(self, master):
         logging.info('Shell Automation started')
 
-        self.crossimage = PhotoImage(file = 'File_Manager/Image/crossout.gif')
-        self.checkimage = PhotoImage(file = 'File_Manager/Image/checkmark.gif')
+        self.crossimage = PhotoImage(file = 'File_Manager/Image/crossout.gif').subsample(5,5)
+        self.checkimage = PhotoImage(file = 'File_Manager/Image/checkmark.gif').subsample(5,5)
 
         master.state(['withdrawn'])
         self.progress_window = Toplevel(master)
@@ -91,6 +91,7 @@ class Automation:
                                                 else:
                                                     ttk.Label(self.progress_window, image = self.checkimage).grid(row = 6, column = 1)
                                                     logging.info('HTML5 test ran: {}'.format(stdout))
+                                                    ttk.Button(self.progress_window, text = 'Exit', command = lambda: self.Destroy(master)).grid(row = 7, column = 1)
                     else:
                         logging.warning('Automation cancelled due to not being connect to tablet via USB OTG cable')
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
@@ -107,6 +108,10 @@ class Automation:
             logging.warning('Automation cancelled due to not connected to WiFi with internet')
             messagebox.showerror(title = 'WiFi Connection', message = 'Connect to a WiFi network with internet access and run the script again')
             master.state(['normal'])
+            
+    def Destroy(self, master):
+        self.progress_window.destroy()
+        master.state(['normal'])
             
 def main():            
     
