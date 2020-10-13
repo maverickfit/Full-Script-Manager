@@ -6,6 +6,8 @@ from tkinter import messagebox
 import subprocess
 
 class Automation:
+    crossimage = PhotoImage(file = 'File_Manager/Image/crossout.png')
+    checkimage = PhotoImage(file = 'File_Manager/Image/checkmark.png')
 
     def __init__(self, master):
         logging.info('Shell Automation started')
