@@ -78,15 +78,19 @@ class Automation:
                                                 else:
                                                     logging.info('HTML5 test ran: {}'.format(stdout))
                     else:
+                        logging.warning('Automation cancelled due to not being connect to tablet via USB OTG cable')
                         messagebox.showerror(title = 'Connection method', message = 'Connect to the testing tablet with a wired USB OTG connection and run the script again.')
                         master.state(['normal'])
                 else:
+                    logging.warning('Automation cancelled due to Oracle JDK not being installed')
                     messagebox.showerror(title = 'Oracle JDK', message = 'Visit https://www.oracle.com/java/technologies/javase-jdk14-downloads.html to install the latest JDK.\n This is required to run the keytool for signing key verification.')
                     master.state(['normal'])
             else:
+                logging.warning('Automation cancelled due to tablet not being rooted')
                 messagebox.showerror(title = 'Tablet Rooted', message = 'Root the tablet and run the script again')
                 master.state(['normal'])
         else:
+            logging.warning('Automation cancelled due to not connected to WiFi with internet')
             messagebox.showerror(title = 'WiFi Connection', message = 'Connect to a WiFi network with internet access and run the script again')
             master.state(['normal'])
             
