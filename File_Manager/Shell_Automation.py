@@ -19,7 +19,7 @@ class Automation:
             if messagebox.askyesno(title = 'Tablet Rooted', message = 'Is the tablet rooted (rooting instructions are found in README.md)?'):
                 if messagebox.askyesno(title = 'Oracle JDK', message = 'Is the latest JDK from Oracle installed on your testing computer?'):
                     if messagebox.askyesno(title = 'Connection method', message = 'Are you connected to the tablet via a wired USB OTG cable (not WiFi)?'):
-                        os.chdir('File_Manager/Shell_Scripts')
+                        os.chdir('File_Manager/Shell_Scripts/Automation')
                         logging.info('Testing started')
                         ttk.Label(self.progress_window, text = 'Webview Signing Key: ').grid(row = 0, column = 0)
                         webview_key = subprocess.Popen(['./webview-signing-key-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
