@@ -60,6 +60,7 @@ def main():
 		header = ttk.Frame(main_window, width = 400, height = 20)
 		welcome = ttk.Label(header, text = 'Welcome to the Full Script Manager')
 		ip_display = ttk.Label(header, text = 'IP: ' + ip_address.Get_IP())
+		
 		#Header griding
 		header.grid(row = 0, column = 0, columnspan = 2, sticky = EW)
 		welcome.grid(row = 0, column = 0)
@@ -69,6 +70,7 @@ def main():
 		image_frame = ttk.Frame(main_window, width = 100, height = 200)
 		image = PhotoImage(file = 'File_Manager/Image/Automation.gif').subsample(5,3)
 		image_label = ttk.Label(image_frame, image = image)
+
 		#Image frame griding
 		image_frame.grid(row = 1, column = 0, sticky = NSEW)
 		image_label.pack(fill = BOTH, expand = True)
@@ -79,6 +81,7 @@ def main():
 		idle_button = ttk.Button(script_frame, text = 'Idle Collector', command = Run_Idle_Collector)
 		shell_automation_button = ttk.Button(script_frame, text = 'Full Shell Automation', command = Run_Full_Shell_Automation)
 		webview_key_button = ttk.Button(script_frame, text = 'Webview Signing Keys', command = Run_Webview_Key)
+
 		#Script griding
 		script_frame.grid(row = 1, column = 1, sticky = NSEW)
 		installer_button.pack()
