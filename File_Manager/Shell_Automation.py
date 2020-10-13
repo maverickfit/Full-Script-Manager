@@ -20,42 +20,49 @@ class Automation:
                         webview_key = subprocess.Popen(['./webview-signing-key-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                         stdout, stderr = webview_key.communicate()
                         if stderr != '':
+                            logging.error(f'Webview Signing Key exited with error: {stderr}')
                             messagebox.showerror(title = 'Webview Signing Key', message='Unable to complete Webview Signing Key Check due to an error: {}'.format(stderr))
                         else:
                             logging.info('Webview signing key check: {}'.format(stdout))
                             geekbench_cpu = subprocess.Popen(['./geekbench-cpu-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                             stdout, stderr = geekbench_cpu.communicate()
                             if stderr != '':
+                                logging.error(f'Geekbench CPU exited with error: {stderr}')
                                 messagebox.showerror(title = 'Geekbench CPU Test', message = 'Unable to complete Geekbench CPU due to an error: {}'.format(stderr))
                             else:
                                 logging.info('Geekbench CPU test ran: {}'.format(stdout))
                                 geekbench_compute = subprocess.Popen(['./geekbench-compute-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                                 stdout, stderr = geekbench_compute.communicate()
                                 if stderr != '':
+                                    logging.error(f'Geekbench compute exited with error: {stderr}')
                                     messagebox.showerror(title = 'Geekbench Compute Test', message = 'Unable to complete Geekbench Compute test due to an error: {}'.format(stderr))
                                 else:
                                     logging.info('Geekbench compute test ran: {}'.format(stdout))
                                     memory = subprocess.Popen(['./memory-verification-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                                     stdout, stderr = memory.communicate()
                                     if stderr != '':
+                                        logging.error(f'Memory verification exited with error: {stderr}')
                                         messagebox.showerror(title = 'Memory Verification', message='Unable to complete Memory Verification due to an error: {}'.format(stderr))
                                     else:
                                         logging.info('Memory Varification test ran: {}'.format(stdout))
                                         processor = subprocess.Popen(['./processor-size-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                                         stdout, stderr = processor.communicate()
                                         if stderr != '':
+                                            logging.error(f'Processor bit size exited with error: {stderr}')
                                             messagebox.showerror(title = 'Processor Bit Size', message='Unable to complete Processor Bit Size due to an error: {}'.format(stderr))
                                         else:
                                             logging.info('Processor Bit Size test ran: {}'.format(stdout))
                                             webview_version = subprocess.Popen(['./webview-version-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                                             stdout, stderr = webview_version.communicate()
                                             if stderr != '':
+                                                logging.error(f'Webview version exited with error: {stderr}')
                                                 messagebox.showerror(title='Webview Version', message='Unable to complete Webview Version Check due to an error: {}'.format(stderr))
                                             else:
                                                 logging.info('Webview Version test ran: {}'.format(stdout))
                                                 html5 = subprocess.Popen(['.html5-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                                                 stdout, stderr = html5.communicate()
                                                 if stderr != '':
+                                                    logging.error(f'HTML5 exited with error: {stderr}')
                                                     messagebox.showerror(title='HTML5 Test', message='Unable to complete HTML5 test due to an error: {}'.format(stderr))
                                                 else:
                                                     logging.info('HTML5 test ran: {}'.format(stdout))
