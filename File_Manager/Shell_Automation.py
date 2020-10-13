@@ -29,6 +29,7 @@ class Automation:
                             logging.error(f'Webview Signing Key exited with error: {stderr}')
                             messagebox.showerror(title = 'Webview Signing Key', message='Unable to complete Webview Signing Key Check due to an error: {}'.format(stderr))
                         else:
+                            ttk.Label(self.progress_window, image = self.checkimage).grid(row = 0, column = 1)
                             logging.info('Webview signing key check: {}'.format(stdout))
                             ttk.Label(self.progress_window, text = 'Geekbench CPU: ').grid(row = 1, column = 0)
                             geekbench_cpu = subprocess.Popen(['./geekbench-cpu-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -38,6 +39,7 @@ class Automation:
                                 logging.error(f'Geekbench CPU exited with error: {stderr}')
                                 messagebox.showerror(title = 'Geekbench CPU Test', message = 'Unable to complete Geekbench CPU due to an error: {}'.format(stderr))
                             else:
+                                ttk.Label(self.progress_window, image = self.checkimage).grid(row = 1, column = 1)
                                 logging.info('Geekbench CPU test ran: {}'.format(stdout))
                                 ttk.Label(self.progress_window, text = 'Geekbench Compute: ').grid(row = 2, column = 0)
                                 geekbench_compute = subprocess.Popen(['./geekbench-compute-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -47,6 +49,7 @@ class Automation:
                                     logging.error(f'Geekbench compute exited with error: {stderr}')
                                     messagebox.showerror(title = 'Geekbench Compute Test', message = 'Unable to complete Geekbench Compute test due to an error: {}'.format(stderr))
                                 else:
+                                    ttk.Label(self.progress_window, image = self.checkimage).grid(row = 2, column = 1)
                                     logging.info('Geekbench compute test ran: {}'.format(stdout))
                                     ttk.Label(self.progress_window, text = 'Memory Verification: ').grid(row = 3, column = 0)
                                     memory = subprocess.Popen(['./memory-verification-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -56,6 +59,7 @@ class Automation:
                                         logging.error(f'Memory verification exited with error: {stderr}')
                                         messagebox.showerror(title = 'Memory Verification', message='Unable to complete Memory Verification due to an error: {}'.format(stderr))
                                     else:
+                                        ttk.Label(self.progress_window, image = self.checkimage).grid(row = 3, column = 1)
                                         logging.info('Memory Varification test ran: {}'.format(stdout))
                                         ttk.Label(self.progress_window, text = 'Processor Bit Size: ').grid(row = 4, column = 0)
                                         processor = subprocess.Popen(['./processor-size-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -65,6 +69,7 @@ class Automation:
                                             logging.error(f'Processor bit size exited with error: {stderr}')
                                             messagebox.showerror(title = 'Processor Bit Size', message='Unable to complete Processor Bit Size due to an error: {}'.format(stderr))
                                         else:
+                                            ttk.Label(self.progress_window, image = self.checkimage).grid(row = 4, column = 1)
                                             logging.info('Processor Bit Size test ran: {}'.format(stdout))
                                             ttk.Label(self.progress_window, text = 'Webview version: ').grid(row = 5, column = 0)
                                             webview_version = subprocess.Popen(['./webview-version-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -74,6 +79,7 @@ class Automation:
                                                 logging.error(f'Webview version exited with error: {stderr}')
                                                 messagebox.showerror(title='Webview Version', message='Unable to complete Webview Version Check due to an error: {}'.format(stderr))
                                             else:
+                                                ttk.Label(self.progress_window, image = self.checkimage).grid(row = 5, column = 1)
                                                 logging.info('Webview Version test ran: {}'.format(stdout))
                                                 ttk.Label(self.progress_window, text = 'HTML5: ').grid(row = 6, column = 0)
                                                 html5 = subprocess.Popen(['./html5-test.sh'], text = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -83,6 +89,7 @@ class Automation:
                                                     logging.error(f'HTML5 exited with error: {stderr}')
                                                     messagebox.showerror(title='HTML5 Test', message='Unable to complete HTML5 test due to an error: {}'.format(stderr))
                                                 else:
+                                                    ttk.Label(self.progress_window, image = self.checkimage).grid(row = 6, column = 1)
                                                     logging.info('HTML5 test ran: {}'.format(stdout))
                     else:
                         logging.warning('Automation cancelled due to not being connect to tablet via USB OTG cable')
