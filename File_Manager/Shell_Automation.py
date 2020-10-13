@@ -108,7 +108,7 @@ class Automation:
             logging.warning('Automation cancelled due to not connected to WiFi with internet')
             messagebox.showerror(title = 'WiFi Connection', message = 'Connect to a WiFi network with internet access and run the script again')
             master.state(['normal'])
-            
+
     def Destroy(self, master):
         self.progress_window.destroy()
         master.state(['normal'])
