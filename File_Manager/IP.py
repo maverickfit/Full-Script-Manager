@@ -15,8 +15,8 @@ class IP:
 		
 		self.label = ttk.Label(self.ip_window, text = 'Please enter target IP address')
 		self.address = ttk.Entry(self.ip_window, width = 12)
-		self.start_button = ttk.Button(self.footer, text = 'Start', command = lambda: self.Start('button'))
-		self.cancel_button = ttk.Button(self.footer, text = 'Cancel', command = lambda: self.Cancel('button'))
+		self.start_button = ttk.Button(self.footer, text = 'Start', command = self.Start)
+		self.cancel_button = ttk.Button(self.footer, text = 'Cancel', command = self.Cancel)
 		
 		self.label.pack(fill = BOTH, expand = True)
 		self.address.pack(fill = BOTH, expand = True)
@@ -34,12 +34,12 @@ class IP:
 		
 		self.ip_window.mainloop()
 	
-	def Start(self, event):
+	def Start(self):
 		logging.info(f'IP started with an ip of {self.address.get()}')
 		self.entered_address = self.address.get()
 		self.ip_window.destroy()
 	
-	def Cancel(self, event):
+	def Cancel(self):
 		logging.info('IP was canceled')
 		self.started = False
 		self.ip_window.destroy()
